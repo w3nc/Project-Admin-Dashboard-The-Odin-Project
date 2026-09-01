@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <!-- sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="logo-icon"></div>
+          <h1 class="logo-text">Dashboard</h1>
+        </div>
+        <div class="sidebar-nav">
+          <ul class="nav-list">
+            <li>
+              <span class="icon home-icon"></span><a href="#home">Home</a>
+            </li>
+            <li>
+              <span class="icon profile-icon"></span
+              ><a href="#profile">Profile</a>
+            </li>
+            <li>
+              <span class="icon message-icon"></span
+              ><a href="#messages">Messages</a>
+            </li>
+            <li>
+              <span class="icon history-icon"></span
+              ><a href="#history">History</a>
+            </li>
+            <li>
+              <span class="icon task-icon"></span><a href="#tasks">Tasks</a>
+            </li>
+            <li>
+              <span class="icon communities-icon"></span
+              ><a href="#commu">Communities</a>
+            </li>
+          </ul>
+          <ul class="nav-list">
+            <li>
+              <span class="icon settings-icon"></span
+              ><a href="#settings">Settings</a>
+            </li>
+            <li>
+              <span class="icon support-icon"></span
+              ><a href="#support">Support</a>
+            </li>
+            <li>
+              <span class="icon privacy-icon"></span
+              ><a href="#privacy">Privacy</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- header -->
+      <header class="header">
+        <div class="search-container">
+          <span class="icon search-icon"></span>
+          <input
+            type="search"
+            id="search"
+            class="search-input"
+            placeholder="Search..."
+          />
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-btn notification-btn">
+            <span class="icon bell-icon"></span>
+          </button>
+          <div class="user-profile">
+            <div class="avatar"></div>
+            <span class="username">Morgan Oakley</span>
+          </div>
+        </div>
+
+        <div class="welcome-section">
+          <div class="user-avatar-large"></div>
+          <div class="welcome-text">
+            <p class="greeting">Hi there,</p>
+            <h2 class="user-name">Morgan Oakley (@morgan)</h2>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary" type="button">New</button>
+            <button class="btn btn-primary" type="button">Upload</button>
+            <button class="btn btn-primary" type="button">Share</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- main-content -->
+      <div class="main-content">
+        <!-- project section -->
+        <section class="projects-section">
+          <h3 class="section-title">Your Projects</h3>
+          <div class="projects-container">
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Super Cool Project</h4>
+                <p class="card-description">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Earum eaque illum iusto natus, nemo omnis?
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Less Cool Project</h4>
+                <p class="card-description">
+                  Sed tempus ut lacus ut scelerisque. Suspendisse sollicitudin
+                  nibh erat, id facilisis felis accumsan nec.
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Impossible App</h4>
+                <p class="card-description">
+                  In hac habitasse platea dictumst. Vivamus dictum rutrum arcu,
+                  a placerat velit sagittis id.
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Easy Peasy App</h4>
+                <p class="card-description">
+                  Etiam cursus eros ac efficitur fringilla. Vestibulum dignissim
+                  urna eget accumsan aliquam.
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Ad Blocker</h4>
+                <p class="card-description">
+                  Quisque eget rutrum nisi. Nam augue justo, cursus vitae metus
+                  vel, pharetra hendrerit felis.
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="card-content">
+                <h4 class="card-title">Money Maker</h4>
+                <p class="card-description">
+                  Praesent convallis, libero quis congue elementum, nunc ante
+                  faucibus sapien, ac scelerisque tortor purus sit amet ex.
+                </p>
+              </div>
+              <div class="card-actions">
+                <button class="icon-btn star-btn" type="button">
+                  <span class="icon star-icon"></span>
+                </button>
+                <button class="icon-btn view-btn" type="button">
+                  <span class="icon eye-icon"></span>
+                </button>
+                <button class="icon-btn share-btn" type="button">
+                  <span class="icon share"></span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="right-column">
+          <!-- announcement section -->
+          <section class="announcements-section">
+            <h3 class="section-title">Announcements</h3>
+            <div class="announcements-list">
+              <article class="announcement-item">
+                <h4 class="announcement-title">Site Maintenance</h4>
+                <p class="announcement-description">
+                  Vestibulum condimentum tellus lacus, in accumsan elit maximus
+                  ac. Donec hendrerit sodales congue.
+                </p>
+              </article>
+
+              <article class="announcement-item">
+                <h4 class="announcement-title">Community Share Day</h4>
+                <p class="announcement-description">
+                  Nam vel lectus tincidunt, rutrum nulla eu, ornare libero.
+                  Aliquam dictum accumsan porttitor.
+                </p>
+              </article>
+
+              <article class="announcement-item">
+                <h4 class="announcement-title">Updated Privacy Policy</h4>
+                <p class="announcement-description">
+                  Phasellus efficitur nisi eget elit consectetur, eget
+                  condimentum ante auctor. Cras fringilla sagittis sem in metus.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- trending section -->
+          <section class="trending-section">
+            <h3 class="section-title">Trending</h3>
+            <div class="trending-list">
+              <div class="trending-item">
+                <div class="avatar"></div>
+                <div class="trending-info">
+                  <p class="trending-user">@tegan</p>
+                  <p class="trending-project">World Peace Builder</p>
+                </div>
+              </div>
+              <div class="trending-item">
+                <div class="avatar"></div>
+                <div class="trending-info">
+                  <p class="trending-user">@morgan</p>
+                  <p class="trending-project">Super Cool Project</p>
+                </div>
+              </div>
+              <div class="trending-item">
+                <div class="avatar"></div>
+                <div class="trending-info">
+                  <p class="trending-user">@kendall</p>
+                  <p class="trending-project">Life Changing App</p>
+                </div>
+              </div>
+              <div class="trending-item">
+                <div class="avatar"></div>
+                <div class="trending-info">
+                  <p class="trending-user">@alex</p>
+                  <p class="trending-project">No Traffic Maker</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
