@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!--
-      Icon sprite.
-      NOTE: deliberately NO fill attribute on the <symbol>s. A <use> clones the
-      symbol into a shadow tree that your document CSS cannot select, so a
-      fill="..." presentation attribute sitting on the symbol would beat the
-      fill your CSS sets on the outer <svg> - and .nav-icon / .content-icon
-      would stop working. With no attribute here, fill simply inherits in.
-      (Your original code said fil="currentColor" - the typo is what kept the
-      CSS working, so don't "fix" it back to fill="currentColor".)
-    -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
       style="display: none"
