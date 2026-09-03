@@ -16,40 +16,62 @@
   padding: 0;
 }
 
-body,
 html {
   height: 100%;
-  font-family: "Roboto";
 }
 
-.sidebar-nav ul {
-  list-style-type: none;
+body {
+  min-height: 100%;
+  font-family: "Roboto", system-ui, sans-serif;
+  color: #1f2937;
 }
 
-.nav-list li a {
-  text-decoration: none;
-  color: white;
+/* screen-reader-only helper (used by the search <label>) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .grid-container {
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 5fr;
+  /* 1fr keeps the mock-up's ~1:5 proportion on a desktop screen, and the
+     220px floor stops the nav labels ("Communities") from being crushed on
+     smaller viewports */
+  grid-template-columns: minmax(220px, 1fr) 5fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "sidebar header"
-    "sidebar main-content"
     "sidebar main-content";
 }
 
 .sidebar {
   grid-area: sidebar;
   background-color: #1992d4;
-
   padding: 16px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 40px;
+
+  /* stays put while the main content scrolls, and the blue always reaches
+     the bottom of the screen */
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  height: 100dvh; 
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+.logo-icon {
+  display: flex;
 }
 
 .sidebar-header {
@@ -57,14 +79,13 @@ html {
   display: flex;
   align-items: center;
   gap: 10px;
-
-  margin-bottom: 40px;
 }
 
 .dashboard-icon {
   width: 43px;
   height: 43px;
   fill: white;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -73,20 +94,25 @@ html {
   font-weight: 600;
 }
 
+.sidebar-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+}
+
 .nav-list {
   display: flex;
   flex-direction: column;
-
   gap: 8px;
-  margin-bottom: 40px;
 }
 
 .nav-list li {
   width: 100%;
-
-  display: flex;
-
-  align-items: center;
 }
 
 .nav-link {
@@ -95,17 +121,19 @@ html {
   gap: 16px;
   padding: 8px 12px;
   border-radius: 8px;
+  text-decoration: none;
+  color: white;
   transition: background-color 0.2s;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-icon {
-  fill: white;
   width: 24px;
   height: 24px;
+  fill: white;
   flex-shrink: 0;
 }
 
@@ -119,40 +147,45 @@ html {
   background-color: #ffffff;
   padding: 16px 32px;
 
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .header-top {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-
-  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .search-container {
+  flex: 1 1 auto;
+  min-width: 150px;
+  max-width: 700px;
+
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 12px;
-  min-width: 150px;
-  max-width: 700px;
-}
-
-.search-icon {
-  min-width: 24px;
-  height: 24px;
-  fill: #6b7280;
 }
 
 .search-input {
+  min-width: 0; /* lets the 1fr track actually shrink instead of overflowing */
   height: 40px;
   border-radius: 20px;
   background-color: #e5e7eb;
   border: none;
   padding: 0 16px;
+  font-family: inherit;
   font-size: 0.95rem;
+  appearance: none; /* Safari ignores the radius on search inputs otherwise */
   outline: none;
+}
+
+.search-input:focus-visible {
+  outline: 2px solid #1478a8;
+  outline-offset: 2px;
 }
 
 .search-input::placeholder {
@@ -163,6 +196,7 @@ html {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .notification-btn {
@@ -184,6 +218,7 @@ html {
   width: 24px;
   height: 24px;
   fill: #374151;
+  flex-shrink: 0;
 }
 
 .user-profile {
@@ -197,6 +232,7 @@ html {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .username {
@@ -206,19 +242,16 @@ html {
 }
 
 .welcome-section {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .welcome-left {
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-.user-avatar-large {
-  flex-shrink: 0;
 }
 
 .avatar-large {
@@ -228,6 +261,7 @@ html {
   object-fit: cover;
   border: 3px solid #fbbf24;
   padding: 2px;
+  flex-shrink: 0;
 }
 
 .welcome-text .greeting {
@@ -245,18 +279,20 @@ html {
 .action-buttons {
   display: flex;
   gap: 24px;
-
-  margin-left: 20px ;
+  flex-shrink: 0;
 }
 
 .btn {
   padding: 10px 24px;
   border: none;
   border-radius: 50px;
+  font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .btn-primary {
@@ -272,15 +308,24 @@ html {
 .main-content {
   grid-area: main-content;
   background-color: #e2e8f0;
+  padding: 25px;
 
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-                      "projects announcements"
-                      "projects trending";
+  
+  grid-template-columns: minmax(0, 3fr) minmax(240px, 1fr);
   gap: 20px;
-  padding: 25px;
+  align-items: stretch; /* explicit: both columns fill the row */
+}
+
+.left-column,
+.right-column {
+  min-width: 0; /* stops long words from widening the grid track */
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  gap: 24px;
 }
 
 .section-title {
@@ -290,54 +335,31 @@ html {
   margin-bottom: 16px;
 }
 
-.project-card,
-.announcements-list,
-.trending-list {
+/* shared white panel */
+.card,
+.project-card {
   background-color: #ffffff;
   border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.content-icon {
-  width: 20px;
-  height: 20px;
-  fill: #374151;
-  transition: fill 0.2s;
-}
-
-.icon-btn:hover .content-icon {
-  fill: #1992d4;
-}
+/* ---------- projects ---------- */
 
 .projects-container {
+  flex: 1; 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr; 
   gap: 20px;
 }
 
 .project-card {
   border-left: 8px solid #fbbf24;
   padding: 20px;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 200px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-btn:hover {
-  background-color: #f3f4f6;
-  border-radius: 50%;
+  justify-content: space-between; /* keeps the icons on the card's bottom edge */
 }
 
 .card-content {
@@ -363,19 +385,48 @@ html {
   gap: 8px;
 }
 
-.announcements-section {
-  background-color: #ffffff;
-  border-radius: 8px;
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background-color: #f3f4f6;
+  border-radius: 50%;
+}
+
+.content-icon {
+  width: 20px;
+  height: 20px;
+  fill: #374151;
+  transition: fill 0.2s;
+}
+
+.icon-btn:hover .content-icon {
+  fill: #1992d4;
+}
+
+/* ---------- announcements ---------- */
+
+.announcements,
+.trending {
+  display: flex;
+  flex-direction: column;
+}
+
+.announcements-list,
+.trending-list {
   padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .announcements-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: 0;
 }
 
 .announcement-item {
@@ -384,6 +435,14 @@ html {
 
 .announcement-item:not(:last-child) {
   border-bottom: 1px solid #e5e7eb;
+}
+
+.announcement-item:first-child {
+  padding-top: 0;
+}
+
+.announcement-item:last-child {
+  padding-bottom: 0;
 }
 
 .announcement-title {
@@ -399,22 +458,18 @@ html {
   line-height: 1.4;
 }
 
-.modern-line {
-  display: none;
-}
+/* ---------- trending ---------- */
 
-.trending-section {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.trending {
+  flex: 1; 
 }
 
 .trending-list {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 12px;
-  padding: 0;
 }
 
 .trending-item {
@@ -424,20 +479,10 @@ html {
   padding: 8px 0;
 }
 
-.trending-item .avatar {
-  flex-shrink: 0;
-}
-
-.trending-item .avatar-small {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .trending-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .trending-user {
@@ -450,32 +495,4 @@ html {
 .trending-project {
   font-size: 0.8rem;
   color: #6b7280;
-}
-
-.projects-section {
-  grid-area: projects;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-/* .right-column {
-  grid-column: 2 / 3;
-  display: flex;
-  flex-direction: column;
-  
-} */
-
-.announcements-container {
-  grid-area: announcements;
-}
-
-.trending-container {
-  grid-area: trending;
 }
